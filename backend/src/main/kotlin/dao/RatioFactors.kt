@@ -1,8 +1,8 @@
 package dao
 
-private val SQUAT_RATIO = 1.5
-private val BENCH_RATIO = 1
-private val DEADLIFT_RATIO = 2
+private const val SQUAT_RATIO = 1.5
+private const val BENCH_RATIO = 1
+private const val DEADLIFT_RATIO = 2
 
 fun addBenchFactors(startingELO: Int,
                     benchMax: Float,
