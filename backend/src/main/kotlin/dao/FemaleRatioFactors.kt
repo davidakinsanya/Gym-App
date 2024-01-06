@@ -4,7 +4,7 @@ private const val SQUAT_RATIO = 1
 private const val BENCH_RATIO = 0.5
 private const val DEADLIFT_RATIO = 1.5
 
-//https://www.boxrox.com/how-strong-should-you-be-athlete-level/
+// https://www.boxrox.com/how-strong-should-you-be-athlete-level/
 
 fun addBenchFactorsFemale(startingELO: Int,
                     benchMax: Float,
