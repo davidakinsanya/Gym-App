@@ -1,6 +1,7 @@
-package dto
+package dao
 
 import dao.*
+import dto.StartingELO
 
 class CalculateELO(private val startingELO: StartingELO) {
   

@@ -1,4 +1,4 @@
-package dao
+package dto
 
 data class StartingELO (val gender: Gender,
                         val age: Int,
