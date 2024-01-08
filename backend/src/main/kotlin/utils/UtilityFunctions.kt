@@ -8,13 +8,13 @@ fun ageFactor(startingELO: StartingELO, currentELO: Int): Int {
   
   newELO += when (startingELO.age) {
     in 26..30 -> {
-      20
+      generateRandom(20)
     }
     in 30..35 -> {
-      30
+      generateRandom(30)
     }
     else -> {
-      50
+      generateRandom(50)
     }
   }
   return newELO
