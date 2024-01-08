@@ -18,7 +18,7 @@ fun addBenchFactors(currentELO: Int,
   else if (benchToBWRatio >= 1.4 && benchToBWRatio < 1.5) 5
   else 10
   
-  return newELO
+  return ageFactor(startingELO, newELO)
 }
 
 fun addSquatFactors(currentELO: Int,
@@ -34,12 +34,12 @@ fun addSquatFactors(currentELO: Int,
   else if (squatToBWRatio >= 1.8 && squatToBWRatio < 1.9) 5
   else 10
   
-  return newELO
+  return ageFactor(startingELO, newELO)
 }
 
-fun addDeadLiftFactors( currentELO: Int,
-                        startingELO: StartingELO,
-                        currentWeight: Float): Int {
+fun addDeadLiftFactors(currentELO: Int,
+                       startingELO: StartingELO,
+                       currentWeight: Float): Int {
   
   var newELO = currentELO
   val deadLiftToBWRatio = startingELO.deadLiftMax / currentWeight
@@ -50,5 +50,22 @@ fun addDeadLiftFactors( currentELO: Int,
   else if (deadLiftToBWRatio >= 2.4 && deadLiftToBWRatio < 2.5) 5
   else 10
   
+  return ageFactor(startingELO, newELO)
+}
+
+fun ageFactor(startingELO: StartingELO, currentELO: Int): Int {
+  var newELO = currentELO
+  
+  newELO += when (startingELO.age) {
+    in 26..30 -> {
+      2
+    }
+    in 30..35 -> {
+      3
+    }
+    else -> {
+      5
+    }
+  }
   return newELO
 }

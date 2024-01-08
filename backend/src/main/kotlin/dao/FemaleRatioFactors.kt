@@ -20,7 +20,7 @@ fun addBenchFactorsFemale(currentELO: Int,
   else if (benchToBWRatio >= 0.9 && benchToBWRatio < 1) 5
   else 10
   
-  return newELO
+  return ageFactor(startingELO, newELO)
 }
 
 fun addSquatFactorsFemale(currentELO: Int,
@@ -36,7 +36,7 @@ fun addSquatFactorsFemale(currentELO: Int,
   else if (squatToBWRatio >= 1.3 && squatToBWRatio < 1.4) 5
   else 10
   
-  return newELO
+  return ageFactor(startingELO, newELO)
 }
 
 fun addDeadLiftFactorsFemale(currentELO: Int,
@@ -52,5 +52,5 @@ fun addDeadLiftFactorsFemale(currentELO: Int,
   else if (deadLiftToBWRatio >= 1.6 && deadLiftToBWRatio < 1.7) 5
   else 10
   
-  return newELO
+  return ageFactor(startingELO, newELO)
 }
