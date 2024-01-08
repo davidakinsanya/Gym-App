@@ -6,12 +6,12 @@ private const val DEADLIFT_RATIO = 1.5
 
 // https://www.boxrox.com/how-strong-should-you-be-athlete-level/
 
-fun addBenchFactorsFemale(startingELO: Int,
-                    benchMax: Float,
-                    currentWeight: Float): Int {
+fun addBenchFactorsFemale(currentELO: Int,
+                          startingELO: StartingELO,
+                          currentWeight: Float): Int {
   
-  var newELO = startingELO
-  val benchToBWRatio = benchMax / currentWeight
+  var newELO = currentELO
+  val benchToBWRatio = startingELO.benchMax / currentWeight
   
   newELO += if (benchToBWRatio >= 0.3 && benchToBWRatio < BENCH_RATIO) 1
   else if (benchToBWRatio >= 0.6 && benchToBWRatio < 0.7) 3
@@ -23,12 +23,12 @@ fun addBenchFactorsFemale(startingELO: Int,
   return newELO
 }
 
-fun addSquatFactorsFemale(startingELO: Int,
-                    squatMax: Float,
-                    currentWeight: Float): Int {
+fun addSquatFactorsFemale(currentELO: Int,
+                          startingELO: StartingELO,
+                          currentWeight: Float): Int {
   
-  var newELO = startingELO
-  val squatToBWRatio = squatMax / currentWeight
+  var newELO = currentELO
+  val squatToBWRatio = startingELO.squatMax / currentWeight
   
   newELO += if (squatToBWRatio >= 0.8 && squatToBWRatio < SQUAT_RATIO) 1
   else if (squatToBWRatio >= 1.1 && squatToBWRatio < 1.2) 3
@@ -39,12 +39,12 @@ fun addSquatFactorsFemale(startingELO: Int,
   return newELO
 }
 
-fun addDeadLiftFactorsFemale(startingELO: Int,
-                       deadLiftMax: Float,
-                       currentWeight: Float): Int {
+fun addDeadLiftFactorsFemale(currentELO: Int,
+                             startingELO: StartingELO,
+                             currentWeight: Float): Int {
   
-  var newELO = startingELO
-  val deadLiftToBWRatio = deadLiftMax / currentWeight
+  var newELO = currentELO
+  val deadLiftToBWRatio = startingELO.deadLiftMax / currentWeight
   
   newELO += if (deadLiftToBWRatio >= 1.3 && deadLiftToBWRatio < DEADLIFT_RATIO) 1
   else if (deadLiftToBWRatio >= 1.4 && deadLiftToBWRatio < 1.5) 3

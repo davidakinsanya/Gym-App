@@ -43,10 +43,11 @@ class CalculateELO(private val startingELO: StartingELO) {
     if (startingELO.benchMax <= 120) {
       STARTING_ELO += 150
     }
-    if (startingELO.gender.gender == "M")
-      return addBenchFactors(STARTING_ELO, startingELO.benchMax, startingELO.weight)
     
-    return addBenchFactorsFemale(STARTING_ELO, startingELO.benchMax, startingELO.weight)
+    if (startingELO.gender.gender == "M")
+      return addBenchFactors(STARTING_ELO, startingELO, startingELO.weight)
+    
+    return addBenchFactorsFemale(STARTING_ELO, startingELO, startingELO.weight)
   }
   
   private fun addSquatMax(): Int {
@@ -73,9 +74,9 @@ class CalculateELO(private val startingELO: StartingELO) {
     }
   
     if (startingELO.gender.gender == "M")
-      return addSquatFactors(STARTING_ELO, startingELO.squatMax, startingELO.weight)
+      return addSquatFactors(STARTING_ELO, startingELO, startingELO.weight)
     
-    return addSquatFactorsFemale(STARTING_ELO, startingELO.squatMax, startingELO.weight)
+    return addSquatFactorsFemale(STARTING_ELO, startingELO, startingELO.weight)
   }
   
   private fun addDeadLiftMax(): Int {
@@ -100,8 +101,8 @@ class CalculateELO(private val startingELO: StartingELO) {
     }
   
     if (startingELO.gender.gender == "M")
-      return addDeadLiftFactors(STARTING_ELO, startingELO.deadLiftMax, startingELO.weight)
+      return addDeadLiftFactors(STARTING_ELO, startingELO, startingELO.weight)
   
-    return addDeadLiftFactorsFemale(STARTING_ELO, startingELO.deadLiftMax, startingELO.weight)
+    return addDeadLiftFactorsFemale(STARTING_ELO, startingELO, startingELO.weight)
   }
 }

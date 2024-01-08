@@ -4,12 +4,12 @@ private const val SQUAT_RATIO = 1.5
 private const val BENCH_RATIO = 1
 private const val DEADLIFT_RATIO = 2
 
-fun addBenchFactors(startingELO: Int,
-                    benchMax: Float,
+fun addBenchFactors(currentELO: Int,
+                    startingELO: StartingELO,
                     currentWeight: Float): Int {
   
-  var newELO = startingELO
-  val benchToBWRatio = benchMax / currentWeight
+  var newELO = currentELO
+  val benchToBWRatio = startingELO.benchMax / currentWeight
   
   newELO += if (benchToBWRatio >= 0.8 && benchToBWRatio < BENCH_RATIO) 1
   else if (benchToBWRatio >= 1.1 && benchToBWRatio < 1.2) 3
@@ -21,12 +21,12 @@ fun addBenchFactors(startingELO: Int,
   return newELO
 }
 
-fun addSquatFactors(startingELO: Int,
-                      squatMax: Float,
-                      currentWeight: Float): Int {
+fun addSquatFactors(currentELO: Int,
+                    startingELO: StartingELO,
+                    currentWeight: Float): Int {
   
-  var newELO = startingELO
-  val squatToBWRatio = squatMax / currentWeight
+  var newELO = currentELO
+  val squatToBWRatio = startingELO.squatMax / currentWeight
   
   newELO += if (squatToBWRatio >= 1.3 && squatToBWRatio < SQUAT_RATIO) 1
   else if (squatToBWRatio >= 1.6 && squatToBWRatio < 1.7) 3
@@ -37,12 +37,12 @@ fun addSquatFactors(startingELO: Int,
   return newELO
 }
 
-fun addDeadLiftFactors(startingELO: Int,
-                    deadLiftMax: Float,
-                    currentWeight: Float): Int {
+fun addDeadLiftFactors( currentELO: Int,
+                        startingELO: StartingELO,
+                        currentWeight: Float): Int {
   
-  var newELO = startingELO
-  val deadLiftToBWRatio = deadLiftMax / currentWeight
+  var newELO = currentELO
+  val deadLiftToBWRatio = startingELO.deadLiftMax / currentWeight
   
   newELO += if (deadLiftToBWRatio >= 1.9 && deadLiftToBWRatio < DEADLIFT_RATIO) 1
   else if (deadLiftToBWRatio >= 2.1 && deadLiftToBWRatio < 2.2) 3
