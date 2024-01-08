@@ -1,11 +1,15 @@
 package dao
 
-import dao.*
+import dao.impl.FemaleRatioFactors
+import dao.impl.MaleRatioFactors
 import dto.StartingELO
 
-class CalculateELO(private val startingELO: StartingELO) {
+class CalculateStartingELO(private val startingELO: StartingELO) {
   
   private var STARTING_ELO = 1000
+  
+  private val maleFactors = MaleRatioFactors()
+  private val femaleFactors = FemaleRatioFactors()
   
   fun calculate(): Int {
     this.addGender()
@@ -46,9 +50,9 @@ class CalculateELO(private val startingELO: StartingELO) {
     }
     
     if (startingELO.gender.gender == "M")
-      return addBenchFactors(STARTING_ELO, startingELO, startingELO.weight)
+      return maleFactors.addBenchFactors(STARTING_ELO, startingELO, startingELO.weight)
     
-    return addBenchFactorsFemale(STARTING_ELO, startingELO, startingELO.weight)
+    return femaleFactors.addBenchFactors(STARTING_ELO, startingELO, startingELO.weight)
   }
   
   private fun addSquatMax(): Int {
@@ -75,9 +79,9 @@ class CalculateELO(private val startingELO: StartingELO) {
     }
   
     if (startingELO.gender.gender == "M")
-      return addSquatFactors(STARTING_ELO, startingELO, startingELO.weight)
+      return maleFactors.addSquatFactors(STARTING_ELO, startingELO, startingELO.weight)
     
-    return addSquatFactorsFemale(STARTING_ELO, startingELO, startingELO.weight)
+    return femaleFactors.addSquatFactors(STARTING_ELO, startingELO, startingELO.weight)
   }
   
   private fun addDeadLiftMax(): Int {
@@ -102,8 +106,8 @@ class CalculateELO(private val startingELO: StartingELO) {
     }
   
     if (startingELO.gender.gender == "M")
-      return addDeadLiftFactors(STARTING_ELO, startingELO, startingELO.weight)
+      return maleFactors.addDeadLiftFactors(STARTING_ELO, startingELO, startingELO.weight)
   
-    return addDeadLiftFactorsFemale(STARTING_ELO, startingELO, startingELO.weight)
+    return femaleFactors.addDeadLiftFactors(STARTING_ELO, startingELO, startingELO.weight)
   }
 }
