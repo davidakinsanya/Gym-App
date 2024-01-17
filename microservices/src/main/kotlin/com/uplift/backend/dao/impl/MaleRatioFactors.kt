@@ -1,7 +1,7 @@
-package dao.impl
+package com.uplift.backend.dao.impl
 
 import dto.StartingELO
-import dao.intrface.Factors
+import com.uplift.backend.dao.intrface.Factors
 import utils.ageFactor
 import utils.generateRandom
 

@@ -1,7 +1,7 @@
-package dao.impl
+package com.uplift.backend.dao.impl
 
 import dto.StartingELO
-import dao.intrface.Factors
+import com.uplift.backend.dao.intrface.Factors
 import utils.ageFactor
 import utils.generateRandom
 
@@ -16,7 +16,6 @@ class FemaleRatioFactors: Factors {
   override fun addBenchFactors(currentELO: Int,
                                startingELO: StartingELO,
                                currentWeight: Float): Int {
-  
   
     var newELO = currentELO
     val benchToBWRatio = startingELO.benchMax / currentWeight

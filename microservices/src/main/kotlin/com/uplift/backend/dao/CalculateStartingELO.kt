@@ -1,7 +1,7 @@
 package dao
 
-import dao.impl.FemaleRatioFactors
-import dao.impl.MaleRatioFactors
+import com.uplift.backend.dao.impl.FemaleRatioFactors
+import com.uplift.backend.dao.impl.MaleRatioFactors
 import dto.StartingELO
 
 class CalculateStartingELO(private val startingELO: StartingELO) {

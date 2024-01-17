@@ -1,4 +1,4 @@
-package dao.intrface
+package com.uplift.backend.dao.intrface
 
 import dto.StartingELO
 
