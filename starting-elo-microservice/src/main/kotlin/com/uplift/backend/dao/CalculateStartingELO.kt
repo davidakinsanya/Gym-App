@@ -2,7 +2,7 @@ package dao
 
 import com.uplift.backend.dao.impl.FemaleRatioFactors
 import com.uplift.backend.dao.impl.MaleRatioFactors
-import dto.StartingELO
+import com.uplift.backend.dto.StartingELO
 
 class CalculateStartingELO(private val startingELO: StartingELO) {
   
@@ -15,9 +15,8 @@ class CalculateStartingELO(private val startingELO: StartingELO) {
     this.addGender()
     this.addBenchMax()
     this.addSquatMax()
-    this.addDeadLiftMax()
     
-    return STARTING_ELO
+    return this.addDeadLiftMax()
   }
   
   private fun addGender(): Int {

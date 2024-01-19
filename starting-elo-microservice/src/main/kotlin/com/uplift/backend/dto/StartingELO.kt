@@ -1,4 +1,6 @@
-package dto
+package com.uplift.backend.dto
+
+import dto.Gender
 
 data class StartingELO (val gender: Gender,
                         val age: Int,

@@ -1,6 +1,6 @@
 package com.uplift.backend.dao.intrface
 
-import dto.StartingELO
+import com.uplift.backend.dto.StartingELO
 
 interface Factors {
   

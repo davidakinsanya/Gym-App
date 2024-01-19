@@ -1,6 +1,6 @@
 package utils
 
-import dto.StartingELO
+import com.uplift.backend.dto.StartingELO
 import kotlin.random.Random
 
 fun ageFactor(startingELO: StartingELO, currentELO: Int): Int {
@@ -22,5 +22,5 @@ fun ageFactor(startingELO: StartingELO, currentELO: Int): Int {
 
 
 fun generateRandom(number: Int): Int {
-  return Random.nextInt(number-(number/2), number)
+  return Random.nextInt(number-5, number)
 }
