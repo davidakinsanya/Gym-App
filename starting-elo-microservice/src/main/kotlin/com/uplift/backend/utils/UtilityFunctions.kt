@@ -1,4 +1,4 @@
-package utils
+package com.uplift.backend.utils
 
 import com.uplift.backend.dto.StartingELO
 import kotlin.random.Random

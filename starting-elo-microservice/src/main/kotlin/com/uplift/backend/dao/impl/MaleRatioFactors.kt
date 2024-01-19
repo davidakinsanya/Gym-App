@@ -2,8 +2,8 @@ package com.uplift.backend.dao.impl
 
 import com.uplift.backend.dto.StartingELO
 import com.uplift.backend.dao.intrface.Factors
-import utils.ageFactor
-import utils.generateRandom
+import com.uplift.backend.utils.ageFactor
+import com.uplift.backend.utils.generateRandom
 
 class MaleRatioFactors: Factors {
   

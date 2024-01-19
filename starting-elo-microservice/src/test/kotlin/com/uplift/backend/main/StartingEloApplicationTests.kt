@@ -1,7 +1,7 @@
 package com.uplift.backend.main
 
-import dao.CalculateStartingELO
-import dto.Gender
+import com.uplift.backend.dao.CalculateStartingELO
+import com.uplift.backend.dto.Gender
 import com.uplift.backend.dto.StartingELO
 import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.Assertions.assertTrue

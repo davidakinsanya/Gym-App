@@ -1,4 +1,4 @@
-package dao
+package com.uplift.backend.dao
 
 import com.uplift.backend.dao.impl.FemaleRatioFactors
 import com.uplift.backend.dao.impl.MaleRatioFactors
