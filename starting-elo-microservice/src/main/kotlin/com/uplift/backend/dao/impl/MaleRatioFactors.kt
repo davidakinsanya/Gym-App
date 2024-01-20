@@ -20,7 +20,7 @@ class MaleRatioFactors: Factors {
     var newELO = currentELO
     val benchToBWRatio = startingELO.benchMax / currentWeight
   
-    println("bch ratio:  + $benchToBWRatio")
+    // println("bch ratio:  + $benchToBWRatio")
   
     newELO += if (benchToBWRatio >= 0.8 && benchToBWRatio < BENCH_RATIO) generateRandom(10)
     else if (benchToBWRatio >= 1.1 && benchToBWRatio < 1.2) generateRandom(30)
@@ -39,7 +39,7 @@ class MaleRatioFactors: Factors {
     var newELO = currentELO
     val squatToBWRatio = startingELO.squatMax / currentWeight
   
-    println("sqr ratio:  + $squatToBWRatio")
+    // println("sqr ratio:  + $squatToBWRatio")
   
     newELO += if (squatToBWRatio >= 1.3 && squatToBWRatio < SQUAT_RATIO) generateRandom(10)
     else if (squatToBWRatio >= 1.6 && squatToBWRatio < 1.7) generateRandom(30)
@@ -58,7 +58,7 @@ class MaleRatioFactors: Factors {
     var newELO = currentELO
     val deadLiftToBWRatio = startingELO.deadLiftMax / currentWeight
   
-    println("dd ratio:  + $deadLiftToBWRatio")
+    // println("dd ratio:  + $deadLiftToBWRatio")
   
     newELO += if (deadLiftToBWRatio >= 1.9 && deadLiftToBWRatio < DEADLIFT_RATIO) generateRandom(10)
     else if (deadLiftToBWRatio >= 2.1 && deadLiftToBWRatio < 2.2) generateRandom(30)
@@ -70,5 +70,4 @@ class MaleRatioFactors: Factors {
     return ageFactor(startingELO, newELO)
     
   }
-  
 }
