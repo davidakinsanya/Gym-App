@@ -5,13 +5,9 @@ import com.uplift.backend.dao.intrface.Factors
 import com.uplift.backend.utils.ageFactor
 import com.uplift.backend.utils.generateRandom
 
+// https://strengthlevel.com/strength-standards/male/kg
+
 class MaleRatioFactors: Factors {
-  
-  companion object {
-    private const val SQUAT_RATIO = 1.5
-    private const val BENCH_RATIO = 1
-    private const val DEADLIFT_RATIO = 2
-  }
   
   override fun addBenchFactors(currentELO: Int,
                                startingELO: StartingELO,
@@ -21,14 +17,43 @@ class MaleRatioFactors: Factors {
     val benchToBWRatio = startingELO.benchMax / currentWeight
   
     // println("bch ratio:  + $benchToBWRatio")
-  
-    newELO += if (benchToBWRatio >= 0.8 && benchToBWRatio < BENCH_RATIO) generateRandom(10)
-    else if (benchToBWRatio >= 1.1 && benchToBWRatio < 1.2) generateRandom(30)
-    else if (benchToBWRatio >= 1.3 && benchToBWRatio < 1.3) generateRandom(40)
-    else if (benchToBWRatio >= 1.3 && benchToBWRatio < 1.4) generateRandom(50)
-    else if (benchToBWRatio >= 1.4 && benchToBWRatio < 1.5) generateRandom(60)
-    else generateRandom(100)
-  
+    
+    newELO += when (benchToBWRatio) {
+      in 0.0 .. 0.8 -> {
+          generateRandom(10)
+      }
+      in 0.9 .. 1.2 -> {
+        generateRandom(30)
+      }
+      in 1.2 .. 1.3 -> {
+        generateRandom(30)
+      }
+      in 1.3 .. 1.4 -> {
+        generateRandom(40)
+      }
+      in 1.4 .. 1.5 -> {
+        generateRandom(50)
+      }
+      in 1.5 .. 1.6 -> {
+        generateRandom(60) // intermediate
+      }
+      in 1.6 .. 1.7 -> {
+        generateRandom(70) // advanced
+      }
+      in 1.7 .. 1.8 -> {
+        generateRandom(80)
+      }
+      in 1.8 .. 1.9 -> {
+        generateRandom(90)
+      }
+      in 1.9 .. 2.0 -> {
+        generateRandom(95)
+      }
+      else -> {
+        generateRandom(180) // elite
+      }
+    }
+    
     return ageFactor(startingELO, newELO)
   }
   
@@ -40,14 +65,55 @@ class MaleRatioFactors: Factors {
     val squatToBWRatio = startingELO.squatMax / currentWeight
   
     // println("sqr ratio:  + $squatToBWRatio")
-  
-    newELO += if (squatToBWRatio >= 1.3 && squatToBWRatio < SQUAT_RATIO) generateRandom(10)
-    else if (squatToBWRatio >= 1.6 && squatToBWRatio < 1.7) generateRandom(30)
-    else if (squatToBWRatio >= 1.7 && squatToBWRatio < 1.8) generateRandom(40)
-    else if (squatToBWRatio >= 1.8 && squatToBWRatio < 1.9) generateRandom(50)
-    else if (squatToBWRatio >= 2.5 && squatToBWRatio < 2.6) generateRandom(55)
-    else generateRandom(100)
-  
+    
+    newELO += when (squatToBWRatio) {
+      in 0.0 .. 0.8 -> {
+        generateRandom(10) // beginner
+      }
+      in 0.9 .. 1.2 -> {
+        generateRandom(30) // novice
+      }
+      in 1.2 .. 1.3 -> {
+        generateRandom(30)
+      }
+      in 1.3 .. 1.4 -> {
+        generateRandom(40)
+      }
+      in 1.4 .. 1.5 -> {
+        generateRandom(50)
+      }
+      in 1.5 .. 1.6 -> {
+        generateRandom(60) // intermediate
+      }
+      in 1.6 .. 1.7 -> {
+        generateRandom(70)
+      }
+      in 1.7 .. 1.8 -> {
+        generateRandom(80)
+      }
+      in 1.8 .. 1.9 -> {
+        generateRandom(90)
+      }
+      in 1.9 .. 2.0 -> {
+        generateRandom(95)
+      }
+      in 2.0 .. 2.1 -> {
+        generateRandom(100)
+      }
+      in 2.1 .. 2.3 -> {
+        generateRandom(120) // advanced
+      }
+      in 2.3 .. 2.5 -> {
+        generateRandom(150)
+      }
+      in 2.5 .. 2.7 -> {
+        generateRandom(180)
+      }
+      else -> {
+        generateRandom(200) // elite
+      }
+    }
+    
     return ageFactor(startingELO, newELO)
   }
   
@@ -59,13 +125,63 @@ class MaleRatioFactors: Factors {
     val deadLiftToBWRatio = startingELO.deadLiftMax / currentWeight
   
     // println("dd ratio:  + $deadLiftToBWRatio")
-  
-    newELO += if (deadLiftToBWRatio >= 1.9 && deadLiftToBWRatio < DEADLIFT_RATIO) generateRandom(10)
-    else if (deadLiftToBWRatio >= 2.1 && deadLiftToBWRatio < 2.2) generateRandom(30)
-    else if (deadLiftToBWRatio >= 2.3 && deadLiftToBWRatio < 2.4) generateRandom(40)
-    else if (deadLiftToBWRatio >= 2.4 && deadLiftToBWRatio < 2.5) generateRandom(50)
-    else if (deadLiftToBWRatio >= 2.5 && deadLiftToBWRatio < 2.6) generateRandom(55)
-    else generateRandom(100)
+    
+    newELO += when (deadLiftToBWRatio) {
+      in 0.0 .. 0.9 -> {
+        generateRandom(10) // beginner
+      }
+      in 0.9 .. 1.2 -> {
+        generateRandom(30)
+      }
+      in 1.2 .. 1.3 -> {
+        generateRandom(30)
+      }
+      in 1.3 .. 1.4 -> {
+        generateRandom(40) // novice
+      }
+      in 1.4 .. 1.5 -> {
+        generateRandom(50)
+      }
+      in 1.5 .. 1.6 -> {
+        generateRandom(60)
+      }
+      in 1.6 .. 1.7 -> {
+        generateRandom(70)
+      }
+      in 1.7 .. 1.8 -> {
+        generateRandom(80)
+      }
+      in 1.8 .. 1.9 -> {
+        generateRandom(90) // intermediate
+      }
+      in 1.9 .. 2.0 -> {
+        generateRandom(95)
+      }
+      in 2.0 .. 2.1 -> {
+        generateRandom(100)
+      }
+      in 2.1 .. 2.3 -> {
+        generateRandom(120)
+      }
+      in 2.3 .. 2.5 -> {
+        generateRandom(150)
+      }
+      in 2.5 .. 2.7 -> {
+        generateRandom(180) // advanced
+      }
+      in 2.7 .. 2.9 -> {
+        generateRandom(200)
+      }
+      in 2.9 .. 3.1 -> {
+        generateRandom(220)
+      }
+      in 3.1 .. 3.25 -> {
+        generateRandom(240)
+      }
+      else -> {
+        generateRandom(260) // elite
+      }
+    }
   
     return ageFactor(startingELO, newELO)
     
