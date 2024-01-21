@@ -7,8 +7,27 @@ import com.uplift.backend.utils.generateRandom
 
 // https://strengthlevel.com/strength-standards/male/kg
 
+/**
+ * This class is purposed with defining the logic of the functions which
+ * analyses the body weight to lift ratios of male lifters.
+ *
+ * @author David
+ */
 class MaleRatioFactors: Factors {
   
+  
+  /**
+   * This method outlines how ELO is added to a male lifter
+   * taking into account the body weight to bench ratio.
+   *
+   * @param currentELO the ELO before taking into account
+   *                   the bench press.
+   * @param startingELO the StartingELO object representing
+   *                    a male lifters basic information.
+   * @param currentWeight a male lifters current weight.
+   *
+   * @return the new ELO after taking into account this lift.
+   */
   override fun addBenchFactors(currentELO: Int,
                                startingELO: StartingELO,
                                currentWeight: Float): Int {
@@ -57,6 +76,18 @@ class MaleRatioFactors: Factors {
     return ageFactor(startingELO, newELO)
   }
   
+  /**
+   * This method outlines how ELO is added to a male lifter
+   * taking into account the body weight to squat ratio.
+   *
+   * @param currentELO the ELO before taking into account
+   *                   the squat.
+   * @param startingELO the StartingELO object representing
+   *                    a male lifters basic information.
+   * @param currentWeight a male lifters current weight.
+   *
+   * @return the new ELO after taking into account this lift.
+   */
   override fun addSquatFactors(currentELO: Int,
                                startingELO: StartingELO,
                                currentWeight: Float): Int {
@@ -117,6 +148,18 @@ class MaleRatioFactors: Factors {
     return ageFactor(startingELO, newELO)
   }
   
+  /**
+   * This method outlines how ELO is added to a male lifter
+   * taking into account the body weight to deadlift ratio.
+   *
+   * @param currentELO the ELO before taking into account
+   *                    the deadlift.
+   * @param startingELO the StartingELO object representing
+   *                    a male lifters basic information.
+   * @param currentWeight a male lifters current weight.
+   *
+   * @return the new ELO after taking into account this lift.
+   */
   override fun addDeadLiftFactors(currentELO: Int,
                                   startingELO: StartingELO,
                                   currentWeight: Float): Int {

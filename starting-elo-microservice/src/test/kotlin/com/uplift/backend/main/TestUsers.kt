@@ -3,6 +3,12 @@ package com.uplift.backend.main
 import com.uplift.backend.dto.Gender
 import com.uplift.backend.dto.StartingELO
 
+/**
+ * This class outlines a number of test users to
+ * test the functions of the microservice.
+ *
+ * @author David
+ */
 class TestUsers {
   
   companion object {
