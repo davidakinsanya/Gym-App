@@ -9,7 +9,8 @@ import com.uplift.backend.utils.generateRandom
 
 /**
  * This class is purposed with defining the logic of the functions which
- * analyses the body weight to lift ratios of female lifters.
+ * analyses the body weight to lift ratios of female lifters and adds ELO
+ * accordingly.
  *
  * @author David
  */

@@ -1,7 +1,5 @@
 package com.uplift.backend.dao.intrface
 
-import com.uplift.backend.dto.StartingELO
-
 /**
  * This interface is purposed with outlining the functions which analyses
  * the body weight to lift ratios of male and women lifters.
@@ -15,14 +13,15 @@ interface Factors {
    * to bench ratio.
    *
    * @param currentELO the ELO before taking into account the bench press.
-   * @param startingELO the StartingELO object representing
-   *                    a new lifters basic information.
+   * @param benchMax the lifters bench max for the week.
+   * @param listOfBench the lifters bench press numbers over the past three weeks.
    * @param currentWeight a new lifters current weight.
    *
-   * @return the new ELO after taking into account this lift.
+   * @return the lifters ELO after considering their bench.
    */
   fun addBenchFactors(currentELO: Int,
-                      startingELO: StartingELO,
+                      benchMax: Float,
+                      listOfBench: List<Float>,
                       currentWeight: Float): Int
   
   /**
@@ -30,14 +29,15 @@ interface Factors {
    * to squat ratio.
    *
    * @param currentELO the ELO before taking into account the squat.
-   * @param startingELO the StartingELO object representing
-   *                    a new lifters basic information.
+   * @param squatMax the lifters squat max for the week.
+   * @param listOfSquat the lifters squat numbers over the past three weeks.
    * @param currentWeight a new lifters current weight.
    *
-   * @return the new ELO after taking into account this lift.
+   * @return the lifters ELO after considering their squat.
    */
   fun addSquatFactors(currentELO: Int,
-                      startingELO: StartingELO,
+                      squatMax: Float,
+                      listOfSquat: List<Float>,
                       currentWeight: Float): Int
   
   
@@ -47,14 +47,15 @@ interface Factors {
    *
    * @param currentELO the ELO before taking into account
    *                    the deadlift.
-   * @param startingELO the StartingELO object representing
-   *                    a new lifters basic information.
+   * @param deadLiftMax the lifters deadlift max for the week.
+   *  @param listOfDeadlift the lifters deadlift numbers over the past three weeks.
    * @param currentWeight a new lifters current weight.
    *
-   * @return the new ELO after taking into account this lift.
+   * @return the lifters ELO after considering their deadlift.
    */
   fun addDeadLiftFactors(currentELO: Int,
-                         startingELO: StartingELO,
+                         deadLiftMax: Float,
+                         listOfDeadlift: List<Float>,
                          currentWeight: Float): Int
   
 }
