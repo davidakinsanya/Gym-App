@@ -2,7 +2,6 @@ package com.uplift.backend.dao.impl
 
 import com.uplift.backend.dao.intrface.Factors
 
-
 // https://strengthlevel.com/strength-standards/male/kg
 
 /**
@@ -30,7 +29,28 @@ class MaleRatioFactors: Factors {
                                benchMax: Float,
                                listOfBench: List<Float>,
                                currentWeight: Float): Int {
-    TODO("Not yet implemented")
+  
+    var newELO = currentELO
+    val threeWeekAverage = listOfBench.sum() / listOfBench.size
+    val benchToBWRatio = benchMax / currentWeight
+  
+    newELO += when (benchToBWRatio) {
+      
+      in 0.0 .. 1.6 -> {
+        1  // beginner
+      }
+      in 1.6 .. 1.7 -> {
+        2  // intermediate
+      }
+      in 1.7 .. 2.0 -> {
+        3  // advanced
+      } else -> {
+       5   // elite
+      }
+      
+    }
+    
+    return 0
   }
   
   /**
@@ -48,7 +68,31 @@ class MaleRatioFactors: Factors {
                                squatMax: Float,
                                listOfSquat: List<Float>,
                                currentWeight: Float): Int {
-    TODO("Not yet implemented")
+    var newELO = currentELO
+    val threeWeekAverage = listOfSquat.sum() / listOfSquat.size
+    val squatToBWRatio = squatMax / currentWeight
+    
+    newELO += when (squatToBWRatio) {
+      
+      in 0.0 .. 0.8 -> {
+        1 // beginner
+      }
+      in 0.9 .. 1.2 -> {
+        2 // novice
+      }
+      in 1.2 .. 1.6 -> {
+        3 // intermediate
+      }
+      in 1.6 .. 2.3 -> {
+        4 // advanced
+      }
+      else -> {
+        5 // elite
+      }
+      
+    }
+      
+    return 0
   }
   
   /**
@@ -69,6 +113,30 @@ class MaleRatioFactors: Factors {
     listOfDeadlift: List<Float>,
     currentWeight: Float
   ): Int {
-    TODO("Not yet implemented")
+    val deadLiftToBWRatio = deadLiftMax / currentWeight
+    val threeWeekAverage = listOfDeadlift.sum() / listOfDeadlift.size
+    var newELO = currentELO
+    
+    newELO += when (deadLiftToBWRatio) {
+  
+      in 0.0 .. 0.9 -> {
+        1 // beginner
+      }
+      in 0.9 .. 1.4 -> {
+        2 // novice
+      }
+      in 1.4 .. 1.9 -> {
+        3 // intermediate
+      }
+      in 1.9 .. 2.7 -> {
+        4 // advanced
+      }
+      else -> {
+        5 // elite
+      }
+      
+    }
+    
+    return 0
   }
 }

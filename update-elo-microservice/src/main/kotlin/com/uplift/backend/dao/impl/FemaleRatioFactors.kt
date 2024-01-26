@@ -28,7 +28,32 @@ class FemaleRatioFactors: Factors {
                                benchMax: Float,
                                listOfBench: List<Float>,
                                currentWeight: Float): Int {
-    TODO("Not yet implemented")
+  
+    var newELO = currentELO
+    val threeWeekAverage = listOfBench.sum() / listOfBench.size
+    val benchToBWRatio = benchMax / currentWeight
+  
+    newELO += when (benchToBWRatio) {
+    
+      in 0.0 .. 0.2 -> {
+        1  // beginner
+      }
+      in 0.2 .. 0.6 -> {
+        2  // novice
+      }
+      in 0.6 .. 0.9 -> {
+        3  // intermediate
+      }
+      in 0.9 .. 1.3 -> {
+        4  // advanced
+      } else -> {
+        5  // elite
+      }
+    
+    }
+  
+    return 0
+    
   }
   
   /**
@@ -46,7 +71,33 @@ class FemaleRatioFactors: Factors {
                                squatMax: Float,
                                listOfSquat: List<Float>,
                                currentWeight: Float): Int {
-    TODO("Not yet implemented")
+  
+    var newELO = currentELO
+    val threeWeekAverage = listOfSquat.sum() / listOfSquat.size
+    val squatToBWRatio = squatMax / currentWeight
+  
+    newELO += when (squatToBWRatio) {
+    
+      in 0.0..0.45 -> {
+        1 // beginner
+      }
+      in 0.45 .. 0.85 -> {
+        2 // novice
+      }
+      in 0.85 .. 1.3 -> {
+        3 // intermediate
+      }
+      in 1.3 .. 2.5 -> {
+        4 // advanced
+      }
+      else -> {
+        5 // elite
+      }
+    
+    }
+  
+    return 0
+    
   }
   
   /**
@@ -67,8 +118,31 @@ class FemaleRatioFactors: Factors {
     listOfDeadlift: List<Float>,
     currentWeight: Float
   ): Int {
-    TODO("Not yet implemented")
+  
+    val deadLiftToBWRatio = deadLiftMax / currentWeight
+    val threeWeekAverage = listOfDeadlift.sum() / listOfDeadlift.size
+    var newELO = currentELO
+  
+    newELO += when (deadLiftToBWRatio) {
+    
+      in 0.0 .. 0.6 -> {
+        1 // beginner
+      }
+      in 0.6 .. 1.1 -> {
+        2 // novice
+      }
+      in 1.1 .. 1.6 -> {
+        3 // intermediate
+      }
+      in 1.6 .. 2.3 -> {
+        4 // advanced
+      }
+      else -> {
+        5 // elite
+      }
+    
+    }
+    
+    return 0
   }
-  
-  
 }
