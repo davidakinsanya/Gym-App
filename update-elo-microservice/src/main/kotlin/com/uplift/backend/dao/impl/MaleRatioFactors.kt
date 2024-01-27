@@ -1,6 +1,10 @@
 package com.uplift.backend.dao.impl
 
 import com.uplift.backend.dao.intrface.Factors
+import com.uplift.backend.dto.Gender
+import com.uplift.backend.dto.Lift
+import com.uplift.backend.dto.LiftData
+import com.uplift.backend.dto.Standard
 
 // https://strengthlevel.com/strength-standards/male/kg
 
@@ -18,125 +22,100 @@ class MaleRatioFactors: Factors {
    * This method outlines how ELO is added taking into account the body weight
    * to bench ratio.
    *
-   * @param currentELO the ELO before taking into account the bench press.
    * @param benchMax a male lifters bench max for the week.
    * @param listOfBench a male lifters bench press numbers over the past three weeks.
    * @param currentWeight a male lifters current weight.
    *
-   * @return a male lifters ELO after considering their bench.
+   * @return a LiftData object.
    */
-  override fun addBenchFactors(currentELO: Int,
-                               benchMax: Float,
+  override fun addBenchFactors(benchMax: Float,
                                listOfBench: List<Float>,
-                               currentWeight: Float): Int {
-  
-    var newELO = currentELO
-    val threeWeekAverage = listOfBench.sum() / listOfBench.size
-    val benchToBWRatio = benchMax / currentWeight
-  
-    newELO += when (benchToBWRatio) {
-      
-      in 0.0 .. 1.6 -> {
-        1  // beginner
-      }
-      in 1.6 .. 1.7 -> {
-        2  // intermediate
-      }
-      in 1.7 .. 2.0 -> {
-        3  // advanced
-      } else -> {
-       5   // elite
-      }
-      
-    }
+                               currentWeight: Float): LiftData {
     
-    return 0
+    return when (benchMax / currentWeight) {
+      
+      in 0.0 .. 0.5 -> {
+        LiftData(gender = Gender.MALE, lift = Lift.BENCH, standard = Standard.BEGINNER, listOfLifts = listOfBench)
+      }
+      in 0.5 .. 1.0 -> {
+        LiftData(gender = Gender.MALE, lift = Lift.BENCH, standard = Standard.NOVICE, listOfLifts = listOfBench)
+      }
+      in 1.1 .. 1.5 -> {
+        LiftData(gender = Gender.MALE, lift = Lift.BENCH, standard = Standard.INTERMEDIATE, listOfLifts = listOfBench)
+      }
+      in 1.5 .. 2.0 -> {
+        LiftData(gender = Gender.MALE, lift = Lift.BENCH, standard = Standard.ADVANCED, listOfLifts = listOfBench)
+      } else -> {
+        LiftData(gender = Gender.MALE, lift = Lift.BENCH, standard = Standard.ELITE, listOfLifts = listOfBench)
+      }
+    }
   }
   
   /**
    * This method outlines how ELO is added taking into account the body weight
    * to squat ratio.
    *
-   * @param currentELO the ELO before taking into account the squat.
    * @param squatMax a male lifters squat max for the week.
    * @param listOfSquat a male lifters squat numbers over the past three weeks.
    * @param currentWeight a male lifters current weight.
    *
-   * @return a male lifters ELO after considering their squat.
+   * @return a LiftData object.
    */
-  override fun addSquatFactors(currentELO: Int,
-                               squatMax: Float,
+  override fun addSquatFactors(squatMax: Float,
                                listOfSquat: List<Float>,
-                               currentWeight: Float): Int {
-    var newELO = currentELO
-    val threeWeekAverage = listOfSquat.sum() / listOfSquat.size
-    val squatToBWRatio = squatMax / currentWeight
-    
-    newELO += when (squatToBWRatio) {
+                               currentWeight: Float): LiftData {
+  
+    return when (squatMax / currentWeight) {
       
       in 0.0 .. 0.8 -> {
-        1 // beginner
+       LiftData(gender = Gender.MALE, lift = Lift.SQUAT, standard = Standard.BEGINNER, listOfLifts = listOfSquat)
       }
       in 0.9 .. 1.2 -> {
-        2 // novice
+        LiftData(gender = Gender.MALE, lift = Lift.SQUAT, standard = Standard.NOVICE, listOfLifts = listOfSquat)
       }
       in 1.2 .. 1.6 -> {
-        3 // intermediate
+        LiftData(gender = Gender.MALE, lift = Lift.SQUAT, standard = Standard.INTERMEDIATE, listOfLifts = listOfSquat)
       }
       in 1.6 .. 2.3 -> {
-        4 // advanced
+        LiftData(gender = Gender.MALE, lift = Lift.SQUAT, standard = Standard.ADVANCED, listOfLifts = listOfSquat)
       }
       else -> {
-        5 // elite
+        LiftData(gender = Gender.MALE, lift = Lift.SQUAT, standard = Standard.ELITE, listOfLifts = listOfSquat)
       }
-      
     }
-      
-    return 0
   }
   
   /**
    * This method outlines how ELO is added taking into account the body weight
    * to deadlift ratio.
    *
-   * @param currentELO the ELO before taking into account
-   *                    the deadlift.
    * @param deadLiftMax a male lifters deadlift max for the week.
    *  @param listOfDeadlift a male lifters deadlift numbers over the past three weeks.
    * @param currentWeight a male lifters current weight.
    *
-   * @return a male lifters ELO after considering their deadlift.
+   * @return a LiftData object..
    */
-  override fun addDeadLiftFactors(
-    currentELO: Int,
-    deadLiftMax: Float,
-    listOfDeadlift: List<Float>,
-    currentWeight: Float
-  ): Int {
-    val deadLiftToBWRatio = deadLiftMax / currentWeight
-    val threeWeekAverage = listOfDeadlift.sum() / listOfDeadlift.size
-    var newELO = currentELO
-    
-    newELO += when (deadLiftToBWRatio) {
+  override fun addDeadLiftFactors(deadLiftMax: Float,
+                                  listOfDeadlift: List<Float>,
+                                  currentWeight: Float): LiftData {
+  
+    return when (deadLiftMax / currentWeight) {
   
       in 0.0 .. 0.9 -> {
-        1 // beginner
+        LiftData(gender = Gender.MALE, lift = Lift.DEADLIFT, standard = Standard.BEGINNER, listOfLifts = listOfDeadlift)
       }
       in 0.9 .. 1.4 -> {
-        2 // novice
+        LiftData(gender = Gender.MALE, lift = Lift.DEADLIFT, standard = Standard.NOVICE, listOfLifts = listOfDeadlift)
       }
       in 1.4 .. 1.9 -> {
-        3 // intermediate
+        LiftData(gender = Gender.MALE, lift = Lift.DEADLIFT, standard = Standard.INTERMEDIATE, listOfLifts = listOfDeadlift)
       }
       in 1.9 .. 2.7 -> {
-        4 // advanced
+        LiftData(gender = Gender.MALE, lift = Lift.DEADLIFT, standard = Standard.ADVANCED, listOfLifts = listOfDeadlift)
       }
       else -> {
-        5 // elite
+        LiftData(gender = Gender.MALE, lift = Lift.DEADLIFT, standard = Standard.ELITE, listOfLifts = listOfDeadlift)
       }
-      
     }
-    
-    return 0
   }
 }
