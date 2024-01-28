@@ -48,7 +48,7 @@ class CalculateUpdateELO(private val updateELO: UpdateELO) {
   
   /**
    * This function takes into account a lifters
-   * squats and creates a LiftData object accordingly.
+   * squat and creates a LiftData object accordingly.
    *
    * @return a LiftData object.
    */
