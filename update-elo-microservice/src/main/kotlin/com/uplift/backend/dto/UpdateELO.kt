@@ -5,20 +5,22 @@ package com.uplift.backend.dto
  * to determine the users ELO increment.
  *
  * @param gender an enum object representing a new lifters gender.
- * @param age an integer representing a users current age.
- * @param weight a float representing a new lifters current weight.
- * @param squatMax a float representing a new lifters max squat.
- * @param benchMax a float representing a new lifters max bench press.
- * @param deadLiftMax a float representing a new lifters max deadlift.
- * @param listOfBench the lifters bench press numbers over the past three weeks.
- * @param listOfSquat a male lifters squat numbers over the past three weeks.
- * @param listOfDeadlift a male lifters deadlift numbers over the past three weeks.
+ * @param age an integer representing an existing current age.
+ * @param weight a float representing an existing lifters current weight.
+ * @param currentELO a float representing an existing lifters current ELO.
+ * @param squatMax a float representing an existing lifters max squat.
+ * @param benchMax a float representing an existing lifters max bench press.
+ * @param deadLiftMax a float representing an existing lifters max deadlift.
+ * @param listOfBench a lifters bench press numbers over the past three weeks.
+ * @param listOfSquat a lifters squat numbers over the past three weeks.
+ * @param listOfDeadlift a lifters deadlift numbers over the past three weeks.
  *
  * @author David
  */
 data class UpdateELO(val gender: Gender,
                      val weight: Float,
                      val age: Int,
+                     val currentELO: Int,
                      val benchMax: Float,
                      val squatMax: Float,
                      val deadLiftMax: Float,
