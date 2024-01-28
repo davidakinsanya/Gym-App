@@ -38,6 +38,7 @@ class StartingEloApplicationTests {
 	 */
 	@Test
 	fun calculateMethodBasicTest() {
+		// println(usr1StartingELO)
 		assertInstanceOf(Integer::class.java, usr1StartingELO)
 	}
 	
@@ -46,6 +47,7 @@ class StartingEloApplicationTests {
 	 */
 	@Test
 	fun calculateUsr2FemaleELO() {
+		// println(usr2FemaleStartingELO)
 		assertInstanceOf(Integer::class.java, usr2FemaleStartingELO)
 	}
 	
@@ -54,9 +56,9 @@ class StartingEloApplicationTests {
 	 * returns higher than the first.
 	 */
 	@Test
-	fun calculateUsr2GreaterThanUsr1() {
+	fun calculateUsr1GreaterThanUsr2() {
 		// println("usr1: $usr1StartingELO usr2: $usr2FemaleStartingELO")
-		assertTrue(usr2FemaleStartingELO > usr1StartingELO)
+		assertTrue(usr1StartingELO > usr2FemaleStartingELO)
 	}
 	
 	/**
