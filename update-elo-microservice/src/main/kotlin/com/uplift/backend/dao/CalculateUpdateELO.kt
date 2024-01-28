@@ -20,43 +20,67 @@ class CalculateUpdateELO(private val updateELO: UpdateELO) {
   private val femaleFactors = FemaleRatioFactors()
   
   fun calculate(): Int {
-    var list = listOf<LiftData>()
-    if (updateELO.gender == Gender.MALE) {
-      list = listOf(
-        maleFactors.addBenchFactors(
-        updateELO.benchMax,
-        updateELO.listOfBench,
-        updateELO.weight),
-        
-        maleFactors.addSquatFactors(
-          updateELO.squatMax,
-          updateELO.listOfSquat,
-          updateELO.weight),
-  
-        maleFactors.addDeadLiftFactors(
-          updateELO.deadLiftMax,
-          updateELO.listOfDeadlift,
-          updateELO.weight),
-      )
-    } else {
-      list = listOf(
-        femaleFactors.addBenchFactors(
-          updateELO.benchMax,
-          updateELO.listOfBench,
-          updateELO.weight),
+    var list = listOf(this.addBenchMax(),
+                      this.addSquatMax(),
+                      this.addDeadLiftMax())
     
-        femaleFactors.addSquatFactors(
-          updateELO.squatMax,
-          updateELO.listOfSquat,
-          updateELO.weight),
-    
-        femaleFactors.addDeadLiftFactors(
-          updateELO.deadLiftMax,
-          updateELO.listOfDeadlift,
-          updateELO.weight),
-      )
-    }
     return 0
   }
   
+  /**
+   * This function takes into account a lifters
+   * bench press and creates a LiftData object accordingly.
+   *
+   * @return a LiftData object.
+   */
+  private fun addBenchMax(): LiftData {
+    return if (updateELO.gender == Gender.MALE)
+      maleFactors.addBenchFactors(
+        updateELO.benchMax,
+        updateELO.listOfBench,
+        updateELO.weight)
+    else
+      femaleFactors.addBenchFactors(
+      updateELO.benchMax,
+      updateELO.listOfBench,
+      updateELO.weight)
+  }
+  
+  /**
+   * This function takes into account a lifters
+   * squats and creates a LiftData object accordingly.
+   *
+   * @return a LiftData object.
+   */
+  private fun addSquatMax(): LiftData {
+    return if (updateELO.gender == Gender.MALE)
+      maleFactors.addSquatFactors(
+        updateELO.squatMax,
+        updateELO.listOfSquat,
+        updateELO.weight)
+    else
+      femaleFactors.addSquatFactors(
+        updateELO.squatMax,
+        updateELO.listOfSquat,
+        updateELO.weight)
+  }
+  
+  /**
+   * This function takes into account a lifters
+   * deadlift and creates a LiftData object accordingly.
+   *
+   * @return a LiftData object.
+   */
+  private fun addDeadLiftMax(): LiftData {
+    return if (updateELO.gender == Gender.MALE)
+      maleFactors.addDeadLiftFactors(
+        updateELO.deadLiftMax,
+        updateELO.listOfDeadlift,
+        updateELO.weight)
+    else
+      femaleFactors.addDeadLiftFactors(
+        updateELO.deadLiftMax,
+        updateELO.listOfDeadlift,
+        updateELO.weight)
+  }
 }
