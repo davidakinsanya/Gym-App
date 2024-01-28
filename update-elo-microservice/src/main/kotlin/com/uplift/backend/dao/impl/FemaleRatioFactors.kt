@@ -34,18 +34,18 @@ class FemaleRatioFactors: Factors {
     return when (benchMax / currentWeight) {
     
       in 0.0 .. 0.2 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.BEGINNER, listOfLifts = listOfBench)
+        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.BEGINNER, currentMax = benchMax, listOfLifts = listOfBench)
       }
       in 0.2 .. 0.6 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.NOVICE, listOfLifts = listOfBench)
+        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.NOVICE, currentMax = benchMax, listOfLifts = listOfBench)
       }
       in 0.6 .. 0.9 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.INTERMEDIATE, listOfLifts = listOfBench)
+        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.INTERMEDIATE, currentMax = benchMax, listOfLifts = listOfBench)
       }
       in 0.9 .. 1.3 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.ADVANCED, listOfLifts = listOfBench)
+        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.ADVANCED, currentMax = benchMax, listOfLifts = listOfBench)
       } else -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.ELITE, listOfLifts = listOfBench)
+        LiftData(gender = Gender.FEMALE, lift = Lift.BENCH, standard = Standard.ELITE, currentMax = benchMax, listOfLifts = listOfBench)
       }
     }
   }
@@ -67,19 +67,19 @@ class FemaleRatioFactors: Factors {
     return when (squatMax / currentWeight) {
     
       in 0.0..0.45 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.BEGINNER, listOfLifts = listOfSquat)
+        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.BEGINNER, currentMax = squatMax, listOfLifts = listOfSquat)
       }
       in 0.45 .. 0.85 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.NOVICE, listOfLifts = listOfSquat)
+        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.NOVICE, currentMax = squatMax, listOfLifts = listOfSquat)
       }
       in 0.85 .. 1.3 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.INTERMEDIATE, listOfLifts = listOfSquat)
+        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.INTERMEDIATE, currentMax = squatMax, listOfLifts = listOfSquat)
       }
       in 1.3 .. 2.5 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.ADVANCED, listOfLifts = listOfSquat)
+        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.ADVANCED, currentMax = squatMax, listOfLifts = listOfSquat)
       }
       else -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.ELITE, listOfLifts = listOfSquat)
+        LiftData(gender = Gender.FEMALE, lift = Lift.SQUAT, standard = Standard.ELITE, currentMax = squatMax, listOfLifts = listOfSquat)
       }
     }
   }
@@ -101,19 +101,19 @@ class FemaleRatioFactors: Factors {
     return when (deadLiftMax / currentWeight) {
     
       in 0.0 .. 0.6 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.BEGINNER, listOfLifts = listOfDeadlift)
+        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.BEGINNER, currentMax = deadLiftMax, listOfLifts = listOfDeadlift)
       }
       in 0.6 .. 1.1 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.NOVICE, listOfLifts = listOfDeadlift)
+        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.NOVICE, currentMax = deadLiftMax, listOfLifts = listOfDeadlift)
       }
       in 1.1 .. 1.6 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.INTERMEDIATE, listOfLifts = listOfDeadlift)
+        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.INTERMEDIATE, currentMax = deadLiftMax, listOfLifts = listOfDeadlift)
       }
       in 1.6 .. 2.3 -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.ADVANCED, listOfLifts = listOfDeadlift)
+        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.ADVANCED, currentMax = deadLiftMax, listOfLifts = listOfDeadlift)
       }
       else -> {
-        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.ELITE, listOfLifts = listOfDeadlift)
+        LiftData(gender = Gender.FEMALE, lift = Lift.DEADLIFT, standard = Standard.ELITE, currentMax = deadLiftMax, listOfLifts = listOfDeadlift)
       }
     }
   }

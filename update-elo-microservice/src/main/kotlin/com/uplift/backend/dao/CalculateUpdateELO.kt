@@ -5,6 +5,7 @@ import com.uplift.backend.dao.impl.MaleRatioFactors
 import com.uplift.backend.dto.Gender
 import com.uplift.backend.dto.LiftData
 import com.uplift.backend.dto.UpdateELO
+import com.uplift.backend.utils.analyseLifts
 
 /**
  * This class accepts information from existing lifters to determine
@@ -20,11 +21,11 @@ class CalculateUpdateELO(private val updateELO: UpdateELO) {
   private val femaleFactors = FemaleRatioFactors()
   
   fun calculate(): Int {
-    var list = listOf(this.addBenchMax(),
+    val list = listOf(this.addBenchMax(),
                       this.addSquatMax(),
                       this.addDeadLiftMax())
     
-    return 0
+    return analyseLifts(updateELO.currentELO, list)
   }
   
   /**
