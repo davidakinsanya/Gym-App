@@ -25,7 +25,7 @@ fun analyseLifts(currentELO: Int, liftData: List<LiftData>): Int {
   if(!uniqueStandards(standardList))
    majorityStandard = standardCheck(standardList)
   
-  return calculateFinalELO( checkLiftPercentages.sum(), majorityStandard, currentELO)
+  return calculateFinalELO(checkLiftPercentages.sum(), majorityStandard, currentELO)
 }
 
 /**
