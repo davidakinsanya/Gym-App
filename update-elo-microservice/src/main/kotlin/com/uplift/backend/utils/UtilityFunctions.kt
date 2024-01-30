@@ -14,17 +14,18 @@ import com.uplift.backend.dto.Standard
 fun analyseLifts(currentELO: Int, liftData: List<LiftData>): Int {
   
   val standardList = mutableListOf<Standard>()
-  val standardListNumbers = mutableListOf<Int>()
-  val listCheckNum = mutableListOf<Int>()
+  val checkLiftPercentages = mutableListOf<Float>()
   
   for (lift in liftData) {
     standardList += lift.standard
-    listCheckNum += liftCheck(lift)
+    checkLiftPercentages += liftCheck(lift)
   }
+  var majorityStandard: Standard = Standard.BEGINNER
   
-  for (standard in standardList) standardListNumbers += standardCheck(standard, standardList)
+  if(!uniqueStandards(standardList))
+   majorityStandard = standardCheck(standardList)
   
-  return currentELO
+  return calculateFinalELO(checkLiftPercentages.sum(), majorityStandard, currentELO)
 }
 
 /**
@@ -43,7 +44,6 @@ fun generatePredicate(standard: Standard): (Standard) -> Boolean = {it == standa
  * a lifter produced a lift of a specific standard across the big three
  * compound lifts.
  *
- * @param standard a Standard enum.
  * @param standardList a list of the lifter's performance across
  *                     the big three compound lifts.
  *
@@ -52,34 +52,44 @@ fun generatePredicate(standard: Standard): (Standard) -> Boolean = {it == standa
  *         compound lifts.
  *
  */
-fun standardCheck(standard: Standard, standardList: List<Standard>): Int {
-  when (standard) {
-    Standard.BEGINNER -> {
-      if (standardList.count(generatePredicate(standard)) >= 2) return 1
-      if (standardList.count(generatePredicate(standard)) == 1) return 2
+fun standardCheck(standardList: List<Standard>): Standard {
+  for (standard in Standard.values())
+    when (standard) {
+      Standard.BEGINNER -> {
+        if (standardList.count(generatePredicate(standard)) >= 2) return Standard.BEGINNER
+      }
+      
+      Standard.NOVICE -> {
+        if (standardList.count(generatePredicate(standard)) >= 2) return Standard.NOVICE
+      }
+      
+      Standard.INTERMEDIATE -> {
+        if (standardList.count(generatePredicate(standard)) >= 2) return Standard.INTERMEDIATE
+      }
+      
+      Standard.ADVANCED -> {
+        if (standardList.count(generatePredicate(standard)) >= 2) return Standard.ADVANCED
+      }
+      
+      Standard.ELITE -> {
+        if (standardList.count(generatePredicate(standard)) >= 2) return Standard.ELITE
+      }
     }
-    
-    Standard.NOVICE -> {
-      if (standardList.count(generatePredicate(standard)) >= 2) return 3
-      if (standardList.count(generatePredicate(standard)) == 1) return 4
-    }
-    
-    Standard.INTERMEDIATE -> {
-      if (standardList.count(generatePredicate(standard)) >= 2) return 5
-      if (standardList.count(generatePredicate(standard)) == 1) return 6
-    }
-    
-    Standard.ADVANCED -> {
-      if (standardList.count(generatePredicate(standard)) >= 2) return 7
-      if (standardList.count(generatePredicate(standard)) == 1) return 8
-    }
-    
-    Standard.ELITE -> {
-      if (standardList.count(generatePredicate(standard)) >= 2) return 9
-      if (standardList.count(generatePredicate(standard)) == 1) return 10
-    }
-  }
-  return -1
+  return Standard.BEGINNER
+}
+
+/**
+ * This function checks if all lifts are performed at
+ * different levels of strength.
+ *
+ * @param standardList a list of the lifter's performance across
+ *                     the big three compound lifts.
+ *
+ * @return a boolean which checks if all lifts are performed
+ *         at different levels of strength.
+ */
+fun uniqueStandards(standardList: List<Standard>): Boolean {
+  return standardList.size > standardList.toSet().size
 }
 
 /**
@@ -87,11 +97,38 @@ fun standardCheck(standard: Standard, standardList: List<Standard>): Int {
  * compound lift against the lifters last three lifts.
  *
  * @param liftData a LiftData object.
- * @return an integer representing the proximity between the
- *         lifters most current lift and the last three recorded lifts.
+ *
+ * @return a percentage increase or decrease comparing current maxes
+ *        to average performance over time.
  */
-fun liftCheck(liftData: LiftData): Int {
+fun liftCheck(liftData: LiftData): Float {
   val avgLifts = liftData.listOfLifts.sum() / liftData.listOfLifts.size
   
-  return 0
+  return if (liftData.currentMax >= avgLifts)
+          (1 + (liftData.currentMax - avgLifts)/avgLifts * 100)
+  
+  else  (1 + (avgLifts - liftData.currentMax)/liftData.currentMax * 100)
+}
+
+
+fun calculateFinalELO(avg: Float, standard: Standard, currentELO: Int): Int {
+  var newELO = currentELO
+  when (standard) {
+    Standard.BEGINNER -> {
+      newELO += 5
+    }
+    Standard.NOVICE -> {
+      newELO += 4
+    }
+    Standard.INTERMEDIATE -> {
+      newELO += 3
+    }
+    Standard.ADVANCED -> {
+      newELO += 2
+    }
+    Standard.ELITE -> {
+      newELO += 1
+    }
+  }
+  return (newELO + avg).toInt()
 }
