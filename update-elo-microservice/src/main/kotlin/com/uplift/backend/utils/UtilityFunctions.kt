@@ -25,7 +25,7 @@ fun analyseLifts(currentELO: Int, liftData: List<LiftData>): Int {
   if(!uniqueStandards(standardList))
    majorityStandard = standardCheck(standardList)
   
-  return calculateFinalELO(checkLiftPercentages.sum(), majorityStandard, currentELO)
+  return calculateFinalELO( checkLiftPercentages.sum(), majorityStandard, currentELO)
 }
 
 /**
@@ -105,12 +105,22 @@ fun liftCheck(liftData: LiftData): Float {
   val avgLifts = liftData.listOfLifts.sum() / liftData.listOfLifts.size
   
   return if (liftData.currentMax >= avgLifts)
-          (1 + (liftData.currentMax - avgLifts)/avgLifts * 100)
+          (liftData.currentMax - avgLifts)/avgLifts * 100
   
-  else  (1 + (avgLifts - liftData.currentMax)/liftData.currentMax * 100)
+  else  (avgLifts - liftData.currentMax)/liftData.currentMax * 100
 }
 
-
+/**
+ * This method calculates the final ELO increment.
+ *
+ * @param avg an average percentage increase or decrease
+ *            across the big three lifts.
+ *
+ * @param standard the majority standard across the big three lifts.
+ * @param currentELO the lifters current ELO.
+ *
+ * @return the new ELO rating.
+ */
 fun calculateFinalELO(avg: Float, standard: Standard, currentELO: Int): Int {
   var newELO = currentELO
   when (standard) {
@@ -130,5 +140,38 @@ fun calculateFinalELO(avg: Float, standard: Standard, currentELO: Int): Int {
       newELO += 1
     }
   }
-  return (newELO + avg).toInt()
+  
+  when (avg) {
+    in 0.0 .. 0.05 -> {
+      newELO += 1
+    }
+    
+    in 0.05 .. 0.1 -> {
+      newELO += 2
+    }
+    
+    in 0.0 .. 0.05 -> {
+      newELO += 3
+    }
+  
+    in 0.05 .. 0.1 -> {
+      newELO += 4
+    }
+    in 0.1 .. 0.15 -> {
+      newELO += 5
+    }
+  
+    in 0.15 .. 0.2 -> {
+      newELO += 6
+    }
+  
+    in 0.2 .. 0.25 -> {
+      newELO += 8
+    }
+    
+    in 0.25 .. 1.0 -> {
+      newELO += 10
+    }
+  }
+  return newELO
 }
