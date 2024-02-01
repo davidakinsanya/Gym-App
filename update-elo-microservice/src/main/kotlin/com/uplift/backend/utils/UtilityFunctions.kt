@@ -88,8 +88,10 @@ fun uniqueStandards(standardList: List<Standard>): Standard {
   return if (standardList.size <= standardList.toSet().size) standardCheck(standardList)
   else {
     val ordinalList = mutableListOf<Int>()
+    
     for (standard in standardList)
       ordinalList += standard.ordinal
+    
     ordinalList.sort()
     Standard.values()[ordinalList[1]]
   }
