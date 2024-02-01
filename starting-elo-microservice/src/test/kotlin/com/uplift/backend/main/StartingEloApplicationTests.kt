@@ -67,7 +67,7 @@ class StartingEloApplicationTests {
 	 */
 	@Test
 	fun calculateSameNumbersDifferentWeightDifference() {
-		// println("usr1: $usr1StartingELO usr2: $usr1HeavyStartingELO")
+		println("usr1: $usr1StartingELO usr2: $usr1HeavyStartingELO")
 		assertTrue(usr1StartingELO > usr1HeavyStartingELO)
 	}
 	

@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class UpdateEloApplication
 
 fun main(args: Array<String>) {
-	runApplication<MainApplication>(*args)
+	runApplication<UpdateEloApplication>(*args)
 }

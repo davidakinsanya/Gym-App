@@ -20,12 +20,8 @@ fun analyseLifts(currentELO: Int, liftData: List<LiftData>): Int {
     standardList += lift.standard
     checkLiftPercentages += liftCheck(lift)
   }
-  var majorityStandard: Standard = Standard.BEGINNER
   
-  if(!uniqueStandards(standardList))
-   majorityStandard = standardCheck(standardList)
-  
-  return calculateFinalELO(checkLiftPercentages.sum(), majorityStandard, currentELO)
+  return calculateFinalELO(avg = checkLiftPercentages.sum(), standard = uniqueStandards(standardList), currentELO = currentELO)
 }
 
 /**
@@ -85,11 +81,18 @@ fun standardCheck(standardList: List<Standard>): Standard {
  * @param standardList a list of the lifter's performance across
  *                     the big three compound lifts.
  *
- * @return a boolean which checks if all lifts are performed
- *         at different levels of strength.
+ * @return the average or most consistent standard out of the
+ *         three standards of the separate lifts.
  */
-fun uniqueStandards(standardList: List<Standard>): Boolean {
-  return standardList.size > standardList.toSet().size
+fun uniqueStandards(standardList: List<Standard>): Standard {
+  return if (standardList.size <= standardList.toSet().size) standardCheck(standardList)
+  else {
+    val ordinalList = mutableListOf<Int>()
+    for (standard in standardList)
+      ordinalList += standard.ordinal
+    ordinalList.sort()
+    Standard.values()[ordinalList[1]]
+  }
 }
 
 /**
@@ -105,9 +108,9 @@ fun liftCheck(liftData: LiftData): Float {
   val avgLifts = liftData.listOfLifts.sum() / liftData.listOfLifts.size
   
   return if (liftData.currentMax >= avgLifts)
-          (liftData.currentMax - avgLifts)/avgLifts * 100
+          (liftData.currentMax - avgLifts)/avgLifts
   
-  else  (avgLifts - liftData.currentMax)/liftData.currentMax * 100
+  else  (avgLifts - liftData.currentMax)/liftData.currentMax
 }
 
 /**
@@ -142,34 +145,34 @@ fun calculateFinalELO(avg: Float, standard: Standard, currentELO: Int): Int {
   }
   
   when (avg) {
-    in 0.0 .. 0.05 -> {
+    in 0.0..0.05 -> {
       newELO += 1
     }
-    
-    in 0.05 .. 0.1 -> {
+  
+    in 0.05..0.1 -> {
       newELO += 2
     }
-    
-    in 0.0 .. 0.05 -> {
+  
+    in 0.0..0.05 -> {
       newELO += 3
     }
   
-    in 0.05 .. 0.1 -> {
+    in 0.05..0.1 -> {
       newELO += 4
     }
-    in 0.1 .. 0.15 -> {
+    in 0.1..0.15 -> {
       newELO += 5
     }
   
-    in 0.15 .. 0.2 -> {
+    in 0.15..0.2 -> {
       newELO += 6
     }
   
-    in 0.2 .. 0.25 -> {
+    in 0.2..0.25 -> {
       newELO += 8
     }
-    
-    in 0.25 .. 1.0 -> {
+  
+    in 0.25..1.0 -> {
       newELO += 10
     }
   }
