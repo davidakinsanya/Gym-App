@@ -87,7 +87,7 @@ fun standardCheck(standardList: List<Standard>): Standard {
  *         three standards of the separate lifts.
  */
 fun uniqueStandards(standardList: List<Standard>): Standard {
-  return if (standardList.size <= standardList.toSet().size) standardCheck(standardList)
+  return if (standardList.size > standardList.toSet().size) standardCheck(standardList)
   else {
     val ordinalList = mutableListOf<Int>()
     
@@ -156,24 +156,17 @@ fun calculateFinalELO(avg: Float, standard: Standard, currentELO: Int): Int {
     in 0.05..0.1 -> {
       newELO += 2
     }
-  
-    in 0.0..0.05 -> {
+    
+    in 0.1..0.15 -> {
       newELO += 3
     }
   
-    in 0.05..0.1 -> {
-      newELO += 4
-    }
-    in 0.1..0.15 -> {
-      newELO += 5
-    }
-  
     in 0.15..0.2 -> {
-      newELO += 6
+      newELO += 4
     }
   
     in 0.2..0.25 -> {
-      newELO += 8
+      newELO += 5
     }
   
     in 0.25..1.0 -> {
