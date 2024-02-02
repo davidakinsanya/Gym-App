@@ -130,6 +130,7 @@ fun liftCheck(liftData: LiftData): Float {
  */
 fun calculateFinalELO(avg: Float, standard: Standard, currentELO: Int): Int {
   var newELO = currentELO
+  
   when (standard) {
     Standard.BEGINNER -> {
       newELO += 5

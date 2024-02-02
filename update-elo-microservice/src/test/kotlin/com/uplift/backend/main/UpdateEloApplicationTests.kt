@@ -23,6 +23,10 @@ class UpdateEloApplicationTests {
 		assertInstanceOf(Integer::class.java, usr1UpdatedELO)
 	}
 	
+	/**
+	 * This function tests if a users ELO comes back as an integer
+	 * for a heavier user.
+	 */
 	@Test
 	fun calculateUsr1HeavyELO() {
 		println(usr1HeavyUpdatedELO)

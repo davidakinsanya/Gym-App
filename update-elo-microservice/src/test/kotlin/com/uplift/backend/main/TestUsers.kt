@@ -32,8 +32,8 @@ class TestUsers {
       benchMax = 95F,
       deadLiftMax = 180F,
       currentELO = 1606,
-      listOfBench = listOf((55.2F * 1.4).toFloat(), (55.2F * 1.41).toFloat(), (55.2F * 1.69).toFloat()),
-      listOfSquat = listOf((55.2F * 2.51).toFloat(), (55.2F * 2.57).toFloat(), (55.2F * 2.51).toFloat()),
-      listOfDeadlift = listOf((55.2F * 2.51).toFloat(), (55.2F * 2.57).toFloat(), (55.2F * 2.51).toFloat()))
+      listOfBench = listOf((70.2F * 1.4).toFloat(), (70.2F * 1.41).toFloat(), (70.2F * 1.69).toFloat()),
+      listOfSquat = listOf((70.2F * 2.51).toFloat(), (70.2F * 2.57).toFloat(), (70.2F * 2.51).toFloat()),
+      listOfDeadlift = listOf((70.2F * 2.51).toFloat(), (70.2F * 2.57).toFloat(), (70.2F * 2.51).toFloat()))
   }
 }
