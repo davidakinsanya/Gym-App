@@ -1,0 +1,24 @@
+type Query {
+    getAllLifters: [Lifter]!
+    getLifterByID: Lifter!
+}
+
+type Mutation {
+    addLifter(id: String, elo: Int, region: String, isPremium: Boolean): Int!
+    deleteLifter(id: String): Int!
+    updateLifter(lifter: LifterInput): Int!
+}
+
+type Lifter {
+    id: String!
+    elo: Int!
+    region: String!
+    isPremium: Boolean!
+}
+
+input LifterInput {
+    id: String!
+    elo: Int!
+    region: String!
+    isPremium: Boolean!
+}

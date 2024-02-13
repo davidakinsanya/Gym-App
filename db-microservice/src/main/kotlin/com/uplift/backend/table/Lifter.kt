@@ -12,6 +12,8 @@ import jakarta.persistence.Table
  * @param elo an integer representing a lifter's ELO rating.
  * @param region a string representing a lifter's region.
  * @param isPremium a boolean representing whether a lifter is a premium user.
+ *
+ * @author David
  */
 @Table(name = "Lifter")
 @Entity
