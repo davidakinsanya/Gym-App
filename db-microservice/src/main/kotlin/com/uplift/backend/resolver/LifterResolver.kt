@@ -4,6 +4,7 @@ import com.uplift.backend.service.LifterService
 import com.uplift.backend.service.impl.LifterServiceImpl
 import com.uplift.backend.table.Lifter
 import org.springframework.graphql.data.method.annotation.Argument
+import org.springframework.graphql.data.method.annotation.MutationMapping
 import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.stereotype.Controller
 import java.util.*
@@ -41,7 +42,7 @@ class LifterResolver(private val lifterImpl: LifterServiceImpl): LifterService {
   /**
    * This method adds a new lifter to the database.
    */
-  @QueryMapping
+  @MutationMapping
   override fun addLifter(@Argument id: String,
                          @Argument elo: Int,
                          @Argument region: String,
@@ -53,7 +54,7 @@ class LifterResolver(private val lifterImpl: LifterServiceImpl): LifterService {
   /**
    * This method deletes a specific lifter from the database.
    */
-  @QueryMapping
+  @MutationMapping
   override fun deleteLifter(@Argument id: String) {
     return lifterImpl.deleteLifter(id)
   }
@@ -61,7 +62,7 @@ class LifterResolver(private val lifterImpl: LifterServiceImpl): LifterService {
   /**
    * This method updates a lifters ELO rating.
    */
-  @QueryMapping
+  @MutationMapping
   override fun updateELO(@Argument lifter: Lifter) {
     return lifterImpl.updateELO(lifter)
   }

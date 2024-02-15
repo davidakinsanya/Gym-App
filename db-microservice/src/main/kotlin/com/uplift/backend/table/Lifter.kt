@@ -19,12 +19,13 @@ import jakarta.persistence.Table
 @Entity
 class Lifter (
   @Id
+  @Column(name = "id", nullable = false)
   private val id: String = "",
-  @Column(nullable = false)
+  @Column(name = "elo", nullable = false)
   private val elo: Int = 0,
-  @Column(nullable = false)
+  @Column(name = "region", nullable = false)
   private val region: String = "",
-  @Column(nullable = false)
+  @Column(name = "isPremium", nullable = false)
   private val isPremium: Boolean = false
 
 ) {
