@@ -4,7 +4,7 @@
 
 ### Mission Statement
 
-Uplift is a minimalist real-time leaderboard-based social platform for casual lifters around tracking and ranking performance around primarily the three major compound movements in the gym, Squat Bench Press and Deadlift. 
+Uplift is a minimalist real-time leaderboard-based social platform for casual lifters who prioritise athleticism around tracking and ranking performance around primarily the three major compound movements in the gym, Squat Bench Press and Deadlift. 
 
 Our platform would serve as a counteracting force in the fitness community as the worlds of fitness and social media intermingle in ways which challenge as well as reveal our real motivations as to why we go to the gym in the first place. We rely on and play up to the utilisation of gamification techniques present in a lot of today’s social media platforms in hopes of targeting and successfully recalibrating parts of the psychology of many casual lifters into going into the gym with the priority more so to build strength rather than to play up to social media’s fitness standards and expectation. The gamification element comes in when we reconsider the act of going to the gym as a skill-based game. 
 
