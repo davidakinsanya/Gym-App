@@ -3,20 +3,33 @@ version: '3'
 services:
   starting-elo-microservice:
     build: ./starting-elo-microservice
+    volumes:
+      - starting-elo-microservice:/usr/src/app
     ports:
       - "5001:5001"
   
   update-elo-microservice:
     build: ./update-elo-microservice
+    volumes:
+      - update-elo-microservice:/usr/src/app
     ports:
       - "5002:5002"
   
   db-microservice:
     build: ./db-microservice
+    volumes:
+      - db-microservice:/usr/src/app
     ports:
       - "5003:5003"
   
   mysql-db:
     build: ./db-microservice/mysql
+    volumes:
+      - mysql:/usr/src/app
     ports:
       - "3307:3306"
+volumes:
+  starting-elo-microservice:
+  update-elo-microservice:
+  db-microservice:
+  mysql:
