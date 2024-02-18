@@ -28,6 +28,7 @@ services:
       - mysql:/usr/src/app
     ports:
       - "3307:3306"
+
 volumes:
   starting-elo-microservice:
   update-elo-microservice:
