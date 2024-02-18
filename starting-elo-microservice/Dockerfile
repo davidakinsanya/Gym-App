@@ -1,4 +1,3 @@
-# Starting ELO MicroService
 FROM openjdk:17-jdk-slim
 
 WORKDIR /src

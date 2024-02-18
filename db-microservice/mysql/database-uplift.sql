@@ -1,0 +1,2 @@
+CREATE DATABASE Uplift;
+USE Uplift;

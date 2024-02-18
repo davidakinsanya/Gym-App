@@ -1,6 +1,0 @@
-services:
-  springboot-app:
-    image: starting-elo-microservice
-    build: .
-    ports:
-      - 8080:8080
