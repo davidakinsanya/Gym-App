@@ -7,8 +7,8 @@ RUN apt-get update
 RUN apt-get install -y dos2unix
 RUN dos2unix gradlew
 
-RUN bash gradlew startingELOJar
+RUN bash gradlew jar
 WORKDIR /run
 
-RUN cp /src/build/libs/startingELO.jar /run/startingELO.jar
+RUN cp /src/build/libs/*.jar /run/startingELO.jar
 CMD java -jar /run/startingELO.jar

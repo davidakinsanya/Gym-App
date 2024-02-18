@@ -1,4 +1,3 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.*
 
 plugins {
@@ -9,8 +8,14 @@ plugins {
 	id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
+apply plugin: 'application'
+
 group = 'com.uplift.backend'
 version = '0.0.1-SNAPSHOT'
+
+application {
+	mainClass.set("com.uplift.backend.main.StartingEloApplicationKt")
+}
 
 java {
 	sourceCompatibility = '17'
@@ -39,10 +44,15 @@ tasks.withType(KotlinCompile) {
 	}
 }
 
-task startingELOJar(type: ShadowJar) {
+jar {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
 	manifest {
-		attributes["Main-Class"] = "com.uplift.backend.main.StartingEloApplicationKt"
-		archiveFileName = "startingELO.jar"
+		attributes 'Main-Class': 'com.uplift.backend.main.StartingEloApplicationKt'
+	}
+
+	from {
+		configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it) }
 	}
 }
 
