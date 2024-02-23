@@ -24,6 +24,7 @@ services:
       - mysql-db
     ports:
       - "5003:5003"
+    network_mode: host
   
   mysql-db:
     build: ./db-microservice/mysql
