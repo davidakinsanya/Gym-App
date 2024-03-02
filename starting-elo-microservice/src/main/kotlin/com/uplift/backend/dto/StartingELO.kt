@@ -16,6 +16,6 @@ package com.uplift.backend.dto
 data class StartingELO (val gender: Gender,
                         val age: Int,
                         val weight: Float,
-                        val squatMax: Float,
-                        val benchMax: Float,
-                        val deadLiftMax: Float)
+                        val squatMax: Float? = null,
+                        val benchMax: Float? = null,
+                        val deadLiftMax: Float? = null)

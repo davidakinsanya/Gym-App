@@ -26,7 +26,7 @@ class StartingEloController {
    * @param benchMax a float representing a new lifters max bench press.
    * @param deadLiftMax a float representing a new lifters max deadlift.
    *
-   * @return a list of a lifters starting ELO and identifying hash code.
+   * @return a list of a lifters' starting ELO and identifying hash code.
    */
   @GetMapping("/starting_elo")
   fun getStartingELO(
@@ -68,5 +68,117 @@ class StartingEloController {
     val startingELO = calculateStartingELO.calculate()
     
     return listOf(startingELO.toString(), hash)
+  }
+  
+  /**
+   * This function defines the specialty squat endpoint.
+   *
+   * @param gender an enum object representing a new lifters gender.
+   * @param age an integer representing a users current age.
+   * @param weight a float representing a new lifters current weight.
+   * @param squatMax a float representing a new lifters max squat.
+   *
+   * @return a list of a lifters' specialty squat ELO.
+   */
+  @GetMapping("/specialty_squat")
+  fun getSquatSpecialty(
+    @Query("gender") gender: String,
+    @Query("age") age: Int,
+    @Query("weight") weight: Float,
+    @Query("squatMax") squatMax: Float,
+  ): Int {
+  
+    val startingELOInfo: StartingELO = if (gender == "MALE") {
+      StartingELO(
+        gender = Gender.MALE,
+        age = age,
+        weight = weight,
+        squatMax = squatMax
+      )
+    } else {
+      StartingELO(
+        gender = Gender.FEMALE,
+        age = age,
+        weight = weight,
+        squatMax = squatMax
+      )
+    }
+  
+    val calculateStartingELO = CalculateStartingELO(startingELOInfo)
+    return calculateStartingELO.calculateSquatSpecialty()
+  }
+  
+  /**
+   * This function defines the specialty bench endpoint.
+   *
+   * @param gender an enum object representing a new lifters gender.
+   * @param age an integer representing a users current age.
+   * @param weight a float representing a new lifters current weight.
+   * @param benchMax a float representing a new lifters max bench press.
+   *
+   * @return a list of a lifters' specialty bench ELO.
+   */
+  @GetMapping("/specialty_bench")
+  fun getBenchSpeciality(
+    @Query("gender") gender: String,
+    @Query("age") age: Int,
+    @Query("weight") weight: Float,
+    @Query("benchMax") benchMax: Float,
+  ): Int {
+  
+    val startingELOInfo: StartingELO = if (gender == "MALE") {
+      StartingELO(
+        gender = Gender.MALE,
+        age = age,
+        weight = weight,
+        benchMax = benchMax
+      )
+    } else {
+      StartingELO(
+        gender = Gender.FEMALE,
+        age = age,
+        weight = weight,
+        benchMax = benchMax
+      )
+    }
+  
+    val calculateStartingELO = CalculateStartingELO(startingELOInfo)
+    return calculateStartingELO.calculateBenchSpecialty()
+  }
+  
+  /**
+   * This function defines the specialty deadlift endpoint.
+   *
+   * @param gender an enum object representing a new lifters gender.
+   * @param age an integer representing a users current age.
+   * @param weight a float representing a new lifters current weight.
+   * @param deadLiftMax a float representing a new lifters max deadlift.
+   *
+   * @return a list of a lifters' specialty deadlift ELO.
+   */
+  @GetMapping("/specialty_deadlift")
+  fun getDeadliftSpecialty(@Query("gender") gender: String,
+                           @Query("age") age: Int,
+                           @Query("weight") weight: Float,
+                           @Query("deadLiftMax") deadLiftMax: Float): Int {
+    
+    val startingELOInfo: StartingELO = if (gender == "MALE") {
+      StartingELO(
+        gender = Gender.MALE,
+        age = age,
+        weight = weight,
+        deadLiftMax = deadLiftMax
+      )
+    } else {
+      StartingELO(
+        gender = Gender.FEMALE,
+        age = age,
+        weight = weight,
+        deadLiftMax = deadLiftMax
+      )
+    }
+  
+    val calculateStartingELO = CalculateStartingELO(startingELOInfo)
+    return calculateStartingELO.calculateDeadliftSpecialty()
   }
 }

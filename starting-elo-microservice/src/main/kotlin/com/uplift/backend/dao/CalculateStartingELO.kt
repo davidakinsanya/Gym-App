@@ -36,6 +36,39 @@ class CalculateStartingELO(private val startingELO: StartingELO) {
   }
   
   /**
+   * This function is purposed with determining a
+   * specialty ELO of new premium lifters on the platform.
+   *
+   * @return the specialty ELO of the new lifter.
+   */
+  fun calculateBenchSpecialty(): Int {
+    this.addGender()
+    return this.addBenchMax()
+  }
+  
+  /**
+   * This function is purposed with determining a
+   * specialty ELO of new premium lifters on the platform.
+   *
+   * @return the specialty ELO of the new lifter.
+   */
+  fun calculateSquatSpecialty(): Int {
+    this.addGender()
+    return this.addSquatMax()
+  }
+  
+  /**
+   * This function is purposed with determining a
+   * specialty ELO of new premium lifters on the platform.
+   *
+   * @return the specialty ELO of the new lifter.
+   */
+  fun calculateDeadliftSpecialty(): Int {
+    this.addGender()
+    return this.addDeadLiftMax()
+  }
+  
+  /**
    * This function takes into account a lifters
    * gender and adds to the ELO accordingly.
    *
@@ -57,7 +90,7 @@ class CalculateStartingELO(private val startingELO: StartingELO) {
    */
   private fun addBenchMax(): Int {
     
-    STARTING_ELO += when (startingELO.benchMax) {
+    STARTING_ELO += when (startingELO.benchMax!!) {
       in 0.0 .. 60.0 -> {
         25
       }
@@ -90,7 +123,7 @@ class CalculateStartingELO(private val startingELO: StartingELO) {
    */
   private fun addSquatMax(): Int {
     
-    STARTING_ELO += when (startingELO.squatMax) {
+    STARTING_ELO += when (startingELO.squatMax!!) {
       in 0.0 .. 60.0 -> {
         25
       }
@@ -123,7 +156,7 @@ class CalculateStartingELO(private val startingELO: StartingELO) {
    */
   private fun addDeadLiftMax(): Int {
     
-    STARTING_ELO += when (startingELO.deadLiftMax) {
+    STARTING_ELO += when (startingELO.deadLiftMax!!) {
       in 0.0 .. 60.0 -> {
         25
       }

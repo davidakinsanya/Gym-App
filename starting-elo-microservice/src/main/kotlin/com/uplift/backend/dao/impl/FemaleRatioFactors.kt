@@ -33,7 +33,7 @@ class FemaleRatioFactors: Factors {
                                currentWeight: Float): Int {
   
     var newELO = currentELO
-    val benchToBWRatio = startingELO.benchMax / currentWeight
+    val benchToBWRatio = startingELO.benchMax!! / currentWeight
   
     // println("bch ratio:  + $benchToBWRatio")
     
@@ -104,7 +104,7 @@ class FemaleRatioFactors: Factors {
                                currentWeight: Float): Int {
   
     var newELO = currentELO
-    val squatToBWRatio = startingELO.squatMax / currentWeight
+    val squatToBWRatio = startingELO.squatMax!! / currentWeight
   
     // println("sqr ratio:  + $squatToBWRatio")
     
@@ -201,7 +201,7 @@ class FemaleRatioFactors: Factors {
                                   currentWeight: Float): Int {
   
     var newELO = currentELO
-    val deadLiftToBWRatio = startingELO.deadLiftMax / currentWeight
+    val deadLiftToBWRatio = startingELO.deadLiftMax!! / currentWeight
   
     // println("dd ratio:  + $deadLiftToBWRatio")
     
