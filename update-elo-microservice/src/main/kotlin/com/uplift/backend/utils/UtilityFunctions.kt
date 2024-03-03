@@ -7,7 +7,7 @@ import com.uplift.backend.dto.Standard
  * This method analyses the lift data and updates the lifters ELO accordingly.
  *
  * @param currentELO the lifters current ELO rating.
- * @param liftData a LiftData object.
+ * @param liftData a LiftData list object.
  *
  * @return the lifters updated ELO.
  */
@@ -24,6 +24,22 @@ fun analyseLifts(currentELO: Int, liftData: List<LiftData>): Int {
   return calculateFinalELO(avg = checkLiftPercentages.sum()/checkLiftPercentages.size,
                            standard = uniqueStandards(standardList),
                            currentELO = currentELO)
+}
+
+/**
+ * This method analyses specialty lift data and updates the lifters ELO accordingly.
+ *
+ * @param currentELO the lifters current ELO rating.
+ * @param liftData a LiftData object.
+ *
+ * @return the lifters updated ELO.
+ */
+fun analyseSpecialtyLift(currentELO: Int, liftData: LiftData): Int {
+  
+  return calculateFinalELO(
+    avg = liftCheck(liftData),
+    standard = uniqueStandards(listOf(liftData.standard)),
+    currentELO = currentELO)
 }
 
 /**
