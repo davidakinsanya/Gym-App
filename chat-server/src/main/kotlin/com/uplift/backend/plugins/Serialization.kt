@@ -1,14 +1,14 @@
 package com.uplift.backend.plugins
 
-import io.ktor.serialization.kotlinx.json.*
-import io.ktor.server.application.*
-import io.ktor.server.plugins.contentnegotiation.*
-import io.ktor.server.response.*
+import io.ktor.serialization.*
+import io.ktor.features.*
+import io.ktor.application.*
+import io.ktor.response.*
+import io.ktor.request.*
+import io.ktor.routing.*
 
 fun Application.configureSerialization() {
     install(ContentNegotiation) {
         json()
-    }
-    routing {
     }
 }
