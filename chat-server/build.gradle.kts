@@ -30,14 +30,11 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 
-    // KMongo
-    implementation("org.litote.kmongo:kmongo:$kmongo_version")
-    implementation("org.litote.kmongo:kmongo-coroutine:$kmongo_version")
-
     // Kotlin coroutine dependency
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     // MongoDB Kotlin driver dependency
     implementation("org.mongodb:mongodb-driver-kotlin-coroutine:4.10.1")
+    implementation("org.mongodb:bson-kotlinx:4.10.1")
 
     // Koin core features
     implementation("io.insert-koin:koin-core:$koin_version")
