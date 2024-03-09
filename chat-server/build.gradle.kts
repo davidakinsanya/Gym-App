@@ -1,7 +1,7 @@
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
-val kmongo_version: String by project
+val mongodb_driver_version: String by project
 val koin_version: String by project
 
 plugins {
@@ -33,8 +33,8 @@ dependencies {
     // Kotlin coroutine dependency
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     // MongoDB Kotlin driver dependency
-    implementation("org.mongodb:mongodb-driver-kotlin-coroutine:4.10.1")
-    implementation("org.mongodb:bson-kotlinx:4.10.1")
+    implementation("org.mongodb:mongodb-driver-kotlin-coroutine:$mongodb_driver_version")
+    implementation("org.mongodb:bson-kotlinx:$mongodb_driver_version")
 
     // Koin core features
     implementation("io.insert-koin:koin-core:$koin_version")
