@@ -36,10 +36,18 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  chat-server:
+    build: ./chat-server
+    volumes:
+      - chat-server:/usr/src/app
+    ports:
+      - "5004:5004"
+
 volumes:
   starting-elo-microservice:
   update-elo-microservice:
   db-microservice:
   mysql:
+  chat-server:
 
 
