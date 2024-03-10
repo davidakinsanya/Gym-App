@@ -12,7 +12,7 @@ RUN apt-get update
 RUN apt-get install -y dos2unix
 RUN dos2unix gradlew
 
-RUN bash gradlew clean build jar
+RUN bash gradlew clean build shadowJar
 WORKDIR /run
 
 RUN groupadd -g ${gid} ${group} && useradd -u ${uid} -g ${group} -s /bin/sh ${user}
