@@ -8,6 +8,7 @@ plugins {
     application
     kotlin("jvm") version "1.8.22"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.6.0"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 group = "com.uplift.backend"
@@ -18,6 +19,14 @@ application {
 
 repositories {
     mavenCentral()
+}
+
+tasks {
+    shadowJar {
+        manifest {
+            attributes(Pair("Main-Class", "com.uplift.backend.main.ApplicationKt"))
+        }
+    }
 }
 
 dependencies {
