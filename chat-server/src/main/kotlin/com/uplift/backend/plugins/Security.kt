@@ -1,11 +1,9 @@
 package com.uplift.backend.plugins
 
 import com.uplift.backend.session.ChatSession
-import io.ktor.sessions.*
-import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.routing.*
+import io.ktor.server.application.*
+import io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase.Plugins
+import io.ktor.server.sessions.*
 import io.ktor.util.*
 
 fun Application.configureSecurity() {
@@ -13,7 +11,7 @@ fun Application.configureSecurity() {
         cookie<ChatSession>("SESSION")
     }
 
-    intercept(ApplicationCallPipeline.Features) {
+    intercept(Plugins) {
         if(call.sessions.get<ChatSession>() == null) {
             val username = call.parameters["username"] ?: "Guest"
             call.sessions.set(ChatSession(username, generateNonce()))

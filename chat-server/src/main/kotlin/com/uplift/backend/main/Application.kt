@@ -1,18 +1,30 @@
-package com.uplift.backend
+package com.uplift.backend.main
 
+import com.typesafe.config.ConfigFactory
 import com.uplift.backend.di.mainModule
-import io.ktor.application.*
 import com.uplift.backend.plugins.*
-import org.koin.ktor.ext.Koin
+import de.sharpmind.ktor.EnvConfig
+import io.ktor.server.application.*
+import io.ktor.server.config.*
+import org.koin.ktor.plugin.Koin
+import java.io.File
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
 
 @Suppress("unused") // application.conf references the main function. This annotation prevents the IDE from marking it as unused.
 fun Application.module() {
+
+    val file = HoconApplicationConfig(
+        ConfigFactory.parseFile(File("../../../resources/application.conf"))
+    )
+
+    EnvConfig.initConfig(file)
+
     install(Koin) {
         modules(mainModule)
     }
+
     configureSockets()
     configureRouting()
     configureSerialization()

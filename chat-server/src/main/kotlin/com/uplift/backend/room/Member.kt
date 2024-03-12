@@ -1,6 +1,6 @@
 package com.uplift.backend.room
 
-import io.ktor.http.cio.websocket.*
+import io.ktor.websocket.*
 
 data class Member(
     val username: String,

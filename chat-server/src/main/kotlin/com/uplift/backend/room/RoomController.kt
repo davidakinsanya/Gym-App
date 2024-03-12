@@ -2,7 +2,7 @@ package com.uplift.backend.room
 
 import com.uplift.backend.data.MessageDataSource
 import com.uplift.backend.data.model.Message
-import io.ktor.http.cio.websocket.*
+import io.ktor.websocket.*
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.util.concurrent.ConcurrentHashMap

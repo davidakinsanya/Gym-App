@@ -3,12 +3,12 @@ package com.uplift.backend.routes
 import com.uplift.backend.room.MemberAlreadyExistsException
 import com.uplift.backend.room.RoomController
 import com.uplift.backend.session.ChatSession
-import io.ktor.application.*
 import io.ktor.http.*
-import io.ktor.http.cio.websocket.*
-import io.ktor.response.*
-import io.ktor.routing.*
-import io.ktor.sessions.*
+import io.ktor.server.application.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
+import io.ktor.server.sessions.*
+import io.ktor.server.websocket.*
 import io.ktor.websocket.*
 import kotlinx.coroutines.channels.consumeEach
 
