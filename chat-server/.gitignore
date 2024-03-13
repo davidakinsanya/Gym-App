@@ -1,4 +1,4 @@
 # Project exclude paths
 /.gradle/
 /build/
-/src/main/resources/
+/src/main/resources/connection.conf
