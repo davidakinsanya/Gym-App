@@ -14,17 +14,9 @@ fun main(args: Array<String>): Unit =
 
 @Suppress("unused") // application.conf references the main function. This annotation prevents the IDE from marking it as unused.
 fun Application.module() {
-
-    val file = HoconApplicationConfig(
-        ConfigFactory.parseFile(File("../../../resources/application.conf"))
-    )
-
-    EnvConfig.initConfig(file)
-
     install(Koin) {
         modules(mainModule)
     }
-
     configureSockets()
     configureRouting()
     configureSerialization()
