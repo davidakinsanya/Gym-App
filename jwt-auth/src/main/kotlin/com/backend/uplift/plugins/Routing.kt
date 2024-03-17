@@ -8,10 +8,12 @@ import io.ktor.server.auth.jwt.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
+/**
+ * This method configures the routing in the server.
+ */
 fun Application.configureRouting(tokenManager: TokenManager) {
     routing {
         authenticate {
-            
             get("/generate-token/{name}/{hash}") {
                 call.respond(tokenManager.generateToken(call.parameters["name"]!!, call.parameters["hash"]!!))
             }
