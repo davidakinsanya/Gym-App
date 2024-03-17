@@ -5,7 +5,6 @@ import com.backend.uplift.plugins.*
 import com.backend.uplift.utils.TokenManager
 import io.ktor.server.application.*
 import io.ktor.server.config.*
-import org.koin.core.context.GlobalContext.get
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.Koin
 
