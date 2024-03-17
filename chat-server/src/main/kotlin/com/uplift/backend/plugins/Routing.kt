@@ -7,6 +7,9 @@ import io.ktor.server.application.*
 import io.ktor.server.routing.*
 import org.koin.ktor.ext.inject
 
+/**
+ * This method configures routing in the server.
+ */
 fun Application.configureRouting() {
     val roomController by inject<RoomController>()
     install(Routing) {

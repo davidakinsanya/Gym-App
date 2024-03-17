@@ -12,6 +12,11 @@ import io.ktor.server.websocket.*
 import io.ktor.websocket.*
 import kotlinx.coroutines.channels.consumeEach
 
+/**
+ * This method configures the chat centered routing in the server.
+ *
+ * @param roomController a RoomController object.
+ */
 fun Route.chatSocket(roomController: RoomController) {
     webSocket("/chat-socket") {
         val session = call.sessions.get<ChatSession>()
