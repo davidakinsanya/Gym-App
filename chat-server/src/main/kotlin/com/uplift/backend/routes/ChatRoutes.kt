@@ -13,7 +13,8 @@ import io.ktor.websocket.*
 import kotlinx.coroutines.channels.consumeEach
 
 /**
- * This method configures the chat centered routing in the server.
+ * This method helps participants going chat sessions in the server
+ * through an accessible endpoint.
  *
  * @param roomController a RoomController object.
  */
@@ -47,7 +48,12 @@ fun Route.chatSocket(roomController: RoomController) {
         }
     }
 }
-
+/**
+ * This method retrieves all messages in the session and
+ * makes it an accessible endpoint.
+ *
+ * @param roomController a RoomController object.
+ */
 fun Route.getAllMessages(roomController: RoomController) {
     get("/messages") {
         call.respond(
